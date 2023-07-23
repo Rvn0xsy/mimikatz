@@ -76,8 +76,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "arm64", "arm64", "{2FC87C8A
 		lib\arm64\ntdll.min.lib = lib\arm64\ntdll.min.lib
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mimilib", "mimilib\mimilib.vcxproj", "{E049487C-C5BD-471E-99AE-C756E70B6520}"
-EndProject
+
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mimidrv", "mimidrv\mimidrv.vcxproj", "{86FF6D04-208C-442F-B27C-E4255DD39402}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mimilove", "mimilove\mimilove.vcxproj", "{60D02E32-1711-4D9E-9AC2-10627C52EB40}"
