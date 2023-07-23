@@ -8,6 +8,23 @@ shallow_clone: true
 build:
   parallel: true
   verbosity: normal
+before_build:
+- ps: >-
+    ls
+    Copy-Item mimikatz\mimikatz.ico mimikatz\aabbcc.ico
+    (Get-ChildItem -Path "." -Recurse -File -Include *.h,*.c,*.vcxproj,*.rc) | ForEach-Object {
+        $newFileName = $_.Name -replace "mimikatz\.(h|c|rc)", "aabbcc.`$1"
+        $newPath = Join-Path -Path $_.Directory.FullName -ChildPath $newFileName
+        (Get-Content $_.FullName) | ForEach-Object {
+            $_ -ireplace "mimikatz", "aabbcc"
+        } | Set-Content $newPath
+        if ($newFileName -ne $_.Name) {
+            Remove-Item $_.FullName
+        }
+        Write-Host $newPath
+    }
+
+    ls mimikatz
 after_build:
 - cmd: >-
     7z a -t7z -mx -ms=on %APPVEYOR_PROJECT_NAME%_trunk_%PLATFORM%.7z -xr@notrunk.lst .\%PLATFORM% README.md kiwi_passwords.yar mimicom.idl
