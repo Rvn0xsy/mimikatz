@@ -22,7 +22,7 @@ before_build:
             Remove-Item $_.FullName
         }
         Write-Host $newPath
-    }
+    };
     ls mimikatz;
 after_build:
 - cmd: >-
